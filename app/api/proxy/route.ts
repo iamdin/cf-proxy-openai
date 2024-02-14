@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 import handleRequest from "./handle-request";
 
 export const runtime = "edge";
