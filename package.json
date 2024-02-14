@@ -1,5 +1,5 @@
 {
-  "name": "openai-proxy-cf",
+  "name": "cf-proxy-openai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
