@@ -1,7 +1,5 @@
 import type { NextRequest } from "next/server";
 
-export const runtime = "edge";
-
 const pickHeaders = (headers: Headers, keys: (string | RegExp)[]): Headers => {
   const picked = new Headers();
   for (const key of Array.from(headers.keys())) {
@@ -22,12 +20,6 @@ const CORS_HEADERS: Record<string, string> = {
 };
 
 export default async function handleRequest(req: NextRequest) {
-  if (req.method === "OPTIONS") {
-    return new Response(null, {
-      headers: CORS_HEADERS,
-    });
-  }
-
   const { pathname, search } = req.nextUrl ? req.nextUrl : new URL(req.url);
   const url = new URL(pathname + search, "https://api.openai.com").href;
   const headers = pickHeaders(req.headers, ["content-type", "authorization"]);
